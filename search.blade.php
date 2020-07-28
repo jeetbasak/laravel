@@ -11,7 +11,7 @@
 <body>
 
 <div class="container">
-  <h2>Table created by {{Session::get('uname')}}</h2>
+  <h2>Table created by JEET</h2>
 <form action="search" method="post">
   @csrf
   <p>
@@ -20,7 +20,6 @@
 <input type="submit" class="btn btn-warning" value="search"></p>
 </form>
 
-<p><a href="logout"class="btn btn-danger" style="float: right;">LOGOUT</a></p>
 
   <table class="table table-condensed">
     <thead>

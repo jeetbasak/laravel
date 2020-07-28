@@ -12,6 +12,8 @@
 
 	<p>email</p>
 	<p><input type="text" name="email"></p>
+	<p>password</p>
+	<p><input type="text" name="password"></p>
 
 	<p>subject</p>
 	<p><input type="checkbox" name="subject[]" value="c">C</p>
