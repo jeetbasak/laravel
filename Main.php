@@ -120,7 +120,7 @@ foreach($obj as $x){    //,,,,,,,,,,,,,,,,,,,,,,foreachloop a session load with 
 $r->session()->put("uid",$x->id);  //.,.,,,,.,.,.,.,session set korlam if login is successful
 $r->session()->put("uname",$x->name);
 
-return redirect("show");
+return redirect("imgform");
 }
 }
 else{
@@ -143,7 +143,89 @@ return redirect("loginform");
 
 
 
+public function imgform(Request $r){
 
+return view("gallery");
+
+}
+
+
+
+
+
+public function imgins(Request $r){
+
+$sid=$r->session()->get("uid");
+
+$c=$r->file("image"); //form ar files name
+
+$fn=$c->getClientOriginalName();
+
+$ext=$c->getClientOriginalExtension();
+ $size=$c->getSize();
+
+
+if(($ext=="jpg" || $ext=="png" || $ext=="jpeg") && (($size/1024)<=2000)){
+
+$obj= new App\Gallerym();
+
+$obj->sid=$sid;
+$obj->image=$fn;
+
+
+$obj->save();
+
+$c->move("pic",$fn);
+
+return redirect("showimg");
+
+}
+}
+
+
+
+
+public function showimg(Request $r){
+
+$uid=$r->session()->get("uid");
+
+$obj=App\Gallerym::where("sid","=",$uid)->get();
+
+$w=array(
+
+'row'=>$obj
+
+);
+
+
+return view("showimg")->with($w);
+}
+
+
+
+
+public function details(Request $r){
+
+$id=$r->id;
+
+$obj=App\Gallerym::where("sid","=",$id)->get();
+
+
+$obj1=App\Modalm::where("id","=",$id)->get();
+
+$w=array(
+
+'row'=>$obj,
+'row1'=>$obj1
+
+);
+
+
+return view("details")->with($w);
+
+
+
+}
 
 
 }

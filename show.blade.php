@@ -30,6 +30,7 @@
          <th>SUBJECT</th>
         <th>GENDER</th>
         <th>CREATED TIME</th>
+        <th>DETAILS</th>
         <th>DELETE</th>
 
       </tr>
@@ -44,6 +45,9 @@
         <td>{{$r->subject}}</td>
         <td>{{$r->gender}}</td>
         <td>{{$r->created_at}}</td>
+
+        <td><a href="details/{{$r->id}}"  class="btn btn-primary" >DETAILS</a></td>
+        
         <td><a href="delete/{{$r->id}}"  class="btn btn-danger" >DELETE</a></td>
       </tr>
      @endforeach
