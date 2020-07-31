@@ -50,7 +50,7 @@ if($r->session()->has('uid')){  //session ta peresent ache ki na..
 
 
 
-$r=App\Modalm::all();//
+$r=App\Modalm::paginate(3);    //   $r=App\Modalm::all();//
 
 $w=array(
 
@@ -202,9 +202,9 @@ return view("showimg")->with($w);
 }
 
 
+ // ................2 database table join..to fetch data from 2 table of database.. taking id from blade(view page) and route..,.......
 
-
-public function details(Request $r){
+public function details(Request $r){ 
 
 $id=$r->id;
 
