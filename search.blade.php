@@ -11,7 +11,7 @@
 <body>
 
 <div class="container">
-  <h2>Table created by JEET</h2>
+  <h2>search table created by JEET</h2>
 <form action="search" method="post">
   @csrf
   <p>
@@ -29,6 +29,7 @@
          <th>SUBJECT</th>
         <th>GENDER</th>
         <th>CREATED TIME</th>
+        <th>DETAILS</th>
         <th>DELETE</th>
 
       </tr>
@@ -44,6 +45,7 @@
         <td>{{$r->gender}}</td>
         <td>{{$r->created_at}}</td>
         <td><a href="delete/{{$r->id}}"  class="btn btn-danger" >DELETE</a></td>
+        <td><a href="details/{{$r->id}}"  class="btn btn-danger" >DETAILS</a></td>
       </tr>
      @endforeach
     </tbody>
