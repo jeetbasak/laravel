@@ -22,3 +22,7 @@ Route::post('/1stpage', "Test@xyz");
 Route::post('/send',"Test@send");
 
 Route::get('/email',"Test@email");
+
+// resource route
+
+Route::resource('song',"Songcontroller");
