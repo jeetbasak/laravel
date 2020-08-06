@@ -43,6 +43,9 @@ Route::get('/showimg',"Main@showimg");
 
 Route::get('/details/{id}',"Main@details");
 Route::post('/like',"Main@like");
+Route::post('/removelike',"Main@removelike");
+Route::post('/bgins',"Main@bgins");
+Route::get('/bgshow',"Main@bgshow");
 
 
 

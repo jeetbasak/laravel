@@ -242,15 +242,65 @@ $obj->picid=$id;
 $obj->myid=$session;
 $obj->save();
 
-/*$sel=App\Like::where("id","=",$id)->get();
+$sel=App\Like::where("picid","=",$id)->get();
 
 echo count($sel);
-*/
-
-
 
 
 }
+
+
+public function removelike(Request $r){
+
+$id=$r->id;
+$session=$r->session()->get("uid");
+
+
+
+$sel=App\Like::where("picid","=",$id)->where("myid","=",$session)->delete();
+/*print_r($sel[0]->id);
+exit();*/
+
+
+//after delete count of likes
+
+$sel=App\Like::where("picid","=",$id)->get();
+echo count($sel);
+
+
+}
+
+
+public function bgins(Request $r){
+
+$bg=$r->bg;
+$session=$r->session()->get("uid");
+$txt=$r->txt;
+
+$i= new App\Bgtext();
+
+$i->bg=$bg;
+$i->text=$txt;
+$i->sid=$session;
+
+$i->save();
+
+return redirect("bgshow");
+
+}
+public function bgshow(Request $r){
+
+$session=$r->session()->get('uid');
+
+$i=App\Bgtext::where("sid","=",$session)->get();
+
+
+
+	return view('bgtxt',compact('i'));
+}
+
+
+
 
 
 }

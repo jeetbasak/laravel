@@ -97,7 +97,8 @@
             @if($cn==0) <i class='far fa-heart' style="font-size:20px; cursor: pointer; margin-top: 15px " onclick="likef('{{$r->id}}')"></i>
             @endif
             @if($cn>0)
-              <i class='fas fa-heart' style='font-size:20px;color:red'></i>
+              <i class='fas fa-heart' style='font-size:20px;color:red'  onclick="removelike('{{$r->id}}')"></i>
+
             @endif
             <?php
 
@@ -137,8 +138,24 @@
       type:'POST',
       data:$("#lk"+id).serialize(),
       success:function(res){
-        $("#btn"+id).html("<i class='fas fa-heart' style='font-size:20px;color:red'></i>")
-       // $("#sl"+id).html(res);
+        $("#btn"+id).html("<i class='fas fa-heart' style='font-size:20px;color:red' onclick='removelike("+id+")' ></i>");
+        $("#sl"+id).html(res);
+        //alert(res);
+
+      }
+    });
+  } 
+
+
+   function removelike(id){
+   
+    $.ajax({
+      url:'http://localhost/jeetlara/removelike',
+      type:'POST',
+      data:$("#lk"+id).serialize(),
+      success:function(res){
+        $("#btn"+id).html("<i class='fas fa-heart' style='font-size:20px;color:black' onclick='likef("+id+")'></i>");
+        $("#sl"+id).html(res);
         //alert(res);
 
       }
