@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFormValidation;
 use Illuminate\Http\Request;
 use App;
 class Main extends Controller
@@ -15,7 +16,17 @@ public function ins(){
 }
 
 
-public function submit(Request $s){
+public function submit(StoreFormValidation $s){ // akhn without req data database a dhukche
+
+/*$this->validate($s,[
+
+'name'=>'required|max:10|min:5',
+
+'email'=>'required|max:10|min:5',
+
+]);*/
+
+
 
 $n=$s->name;
 $e=$s->email;
@@ -298,6 +309,25 @@ $i=App\Bgtext::where("sid","=",$session)->get();
 
 	return view('bgtxt',compact('i'));
 }
+
+/*
+public function s(Request  $r){
+
+
+$s=$r->search;
+$j=App\Modalm::where("name","like","%".$s."%")->get();
+
+$w=array(
+'row'=>$j
+);
+
+return view('l')->with($w);
+
+
+
+}*/
+
+
 
 
 

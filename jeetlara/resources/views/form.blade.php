@@ -4,6 +4,16 @@
 	<title></title>
 </head>
 <body>
+	@if(count($errors)>0)
+
+	@foreach($errors->all() as $error)
+
+<p style="background-color: red">{{$error}}</p>
+
+
+	@endforeach
+
+	@endif
 
 <form action="submit" method="post">
 	@csrf

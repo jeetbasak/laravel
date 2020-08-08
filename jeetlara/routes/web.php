@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/s', function () {
+    return view('s');
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -53,3 +56,5 @@ Route::get('/bgshow',"Main@bgshow");
 
 Route::get('/send',"Mailcontroller@send");
 //Route::get('/sendmail',"Mailcontroller@sendmail");
+
+//Route::post('/se',"Main@s");
